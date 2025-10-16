@@ -1,0 +1,14 @@
+name: Sync Voilà App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Voilà API Sync
+        run: |
+          curl -X POST "https://voila-api.mmopro.in/sync-app" -H "Content-Type: application/json" -d '{"app": "${{ github.repository }}"}'
